@@ -1,0 +1,358 @@
+<html>
+<head>
+<style>
+
+* {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        line-height: 1.6;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    header {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+
+    header p {
+        color: #93c5fd;
+        font-size: 1.1rem;
+    }
+
+    .budget-summary {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 28px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .budget-summary h2 {
+        font-size: 1.25rem;
+        color: var(--primary);
+        margin-bottom: 12px;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 6px;
+    }
+
+    .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+    }
+
+    .info-card {
+        background: #f1f5f9;
+        padding: 12px 16px;
+        border-radius: 8px;
+    }
+
+    .info-card .label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        font-weight: 700;
+    }
+
+    .info-card .value {
+        font-weight: 700;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        margin-top: 2px;
+    }
+
+    .day-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .day-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+    }
+
+    .day-badge {
+        background: var(--primary);
+        color: white;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+    }
+
+    .day-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-main);
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .timeline-item {
+        display: flex;
+        gap: 16px;
+    }
+
+    .time {
+        min-width: 80px;
+        font-weight: 700;
+        color: var(--primary-light);
+        font-size: 0.9rem;
+    }
+
+    .details {
+        flex: 1;
+        font-size: 0.95rem;
+        color: #334155;
+    }
+
+    .details strong {
+        color: var(--text-main);
+    }
+
+    .highlight-note {
+        background: #f0fdf4;
+        border-left: 4px solid #16a34a;
+        padding: 10px 14px;
+        border-radius: 0 6px 6px 0;
+        font-size: 0.9rem;
+        color: #166534;
+        margin-top: 12px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px 0;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+        body { padding: 10px; }
+        header { padding: 20px; }
+        .timeline-item { flex-direction: column; gap: 2px; }
+        .time { min-width: auto; }
+    }
+</style>
+</head>
+<body>
+
+<div class="budget-summary">
+    <h2>Trip Logistics &amp; Budget Framework ($8,000 Cap)</h2>
+    <div class="grid-3">
+        <div class="info-card">
+            <div class="label">Flights</div>
+            <div class="value">AA 281 / AA 280 Nonstop</div>
+            <div style="font-size: 0.8rem; color: #64748b;">Estimated ~$2,800 total</div>
+        </div>
+        <div class="info-card">
+            <div class="label">Hotel Base</div>
+            <div class="value">Nine Tree Premier Myeongdong 2</div>
+            <div style="font-size: 0.8rem; color: #64748b;">4 Nights ~$900 total</div>
+        </div>
+        <div class="info-card">
+            <div class="label">Priority Spa</div>
+            <div class="value">Aquafield Spa Goyang</div>
+            <div style="font-size: 0.8rem; color: #64748b;">Day 4 Relaxing Hot Springs</div>
+        </div>
+    </div>
+</div>
+
+<!-- Day 1 -->
+<div class="day-card">
+    <div class="day-header">
+        <span class="day-badge">DAY 1</span>
+        <span class="day-title">Arrival, Myeongdong Street Food &amp; Bib Gourmand</span>
+    </div>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="time">3:45 PM</div>
+            <div class="details"><strong>Arrival &amp; Transit:</strong> Land at Incheon Airport (ICN T1). Board the non-stop AREX Express Train to Seoul Station (43 mins), then take a quick taxi to <strong>Nine Tree Premier Hotel Myeongdong 2</strong>.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">6:30 PM</div>
+            <div class="details"><strong>Hotel Check-in:</strong> Unpack, refresh, and settle into Myeongdong.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">7:30 PM</div>
+            <div class="details"><strong>Myeongdong Night Market:</strong> Explore the pedestrian avenues. Sample street eats: <strong>Flame-Blowtorched Beef Skewers</strong>, warm <strong>Gyeran-ppang (Egg Bread)</strong>, <em>tteokbokki</em>, and sweet stuffed <em>hoteok</em>.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">9:00 PM</div>
+            <div class="details"><strong>Sit-Down Noodles &amp; Dumplings:</strong> Walk over to <strong>Myeongdong Kyoja</strong> (Michelin Bib Gourmand) for hand-cut noodle soup (<em>kalguksu</em>) and pork dumplings (<em>mandu</em>).</div>
+        </div>
+    </div>
+</div>
+
+<!-- Day 2 -->
+<div class="day-card">
+    <div class="day-header">
+        <span class="day-badge">DAY 2</span>
+        <span class="day-title">Inwangsan Hike, Palaces &amp; Hanok Village</span>
+    </div>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="time">8:30 AM</div>
+            <div class="details"><strong>Breakfast:</strong> Grab artisanal coffee and pastries at <strong>Cafe Onion Anguk</strong> (restored hanok bakery).</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">9:30 AM</div>
+            <div class="details"><strong>Inwangsan Mountain Hike (Active Outdoor Trail):</strong> Hike along the historic wooden and stone paths of the Seoul City Wall to the 338m summit for 360-degree views of the cityscape.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">12:00 PM</div>
+            <div class="details"><strong>Gyeongbokgung Palace:</strong> Descend near Changuimun Gate and explore the Joseon Dynasty's primary royal palace. Rent a <em>Hanbok</em> for free admission.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">1:30 PM</div>
+            <div class="details"><strong>Lunch at Tosokchon Samgyetang:</strong> Refuel after the hike with traditional ginseng chicken soup.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">3:00 PM</div>
+            <div class="details"><strong>Bukchon Hanok Village &amp; Insadong:</strong> Walk Bukchon's preserved residential alleys, then wander down Insadong Culture Street for tea at <strong>Shin Old Tea House</strong>.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">6:30 PM</div>
+            <div class="details"><strong>Korean BBQ Dinner:</strong> Taste charcoal-grilled Jeju pork at <strong>Geumdwaeji Sikdang (Gold Pig)</strong>.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">8:30 PM</div>
+            <div class="details"><strong>N Seoul Tower:</strong> Cable car up Namsan Mountain to view the night skyline.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Day 3 -->
+<div class="day-card">
+    <div class="day-header">
+        <span class="day-badge">DAY 3</span>
+        <span class="day-title">Seongsu-dong, Han River Sunset &amp; Hanwoo Beef</span>
+    </div>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="time">10:30 AM</div>
+            <div class="details"><strong>Seongsu-dong Exploration:</strong> Discover converted industrial warehouse cafes and fashion pop-ups in Seongsu-dong. Stop at <strong>Center Coffee</strong> or view <strong>Dior Seongsu</strong>.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">1:00 PM</div>
+            <div class="details"><strong>Lunch at Maple Tree House:</strong> Premium table-side Korean BBQ featuring marbled Hanwoo beef in Itaewon.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">3:00 PM</div>
+            <div class="details"><strong>Starfield Library &amp; COEX:</strong> Cross the river into Gangnam to view the massive 13-meter-tall wooden book towers.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">5:30 PM</div>
+            <div class="details"><strong>Yeouido Hangang Park Sunset:</strong> Stroll the river banks, rent bicycles, and cook instant ramyeon at automated riverbank stations.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">8:00 PM</div>
+            <div class="details"><strong>Dinner at Born &amp; Bred (2F Casual):</strong> Savor legendary native Korean Hanwoo beef in Majang-dong.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Day 4 -->
+<div class="day-card">
+    <div class="day-header">
+        <span class="day-badge">DAY 4</span>
+        <span class="day-title">Hongdae, Luxury Hot Spring Spa &amp; Hanok Cocktails</span>
+    </div>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="time">10:00 AM</div>
+            <div class="details"><strong>Hongdae District:</strong> Walk through Hongdae's indie shopping streets, vintage fashion stores, and live busking spots.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">12:30 PM</div>
+            <div class="details"><strong>Lunch at Kyochon Chicken 1991:</strong> Enjoy crisp Korean Fried Chicken (<em>Chimaek</em>) paired with soy garlic wings and cold draft beer.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">2:00 PM</div>
+            <div class="details"><strong>Aquafield Goyang (Hot Spring Spa &amp; Thermal Pools):</strong> Spend 3.5 to 4 unhurried hours at one of Seoul's top thermal spas. Enjoy outdoor foot-soaks, mineral pools, cypress rooms, and relaxation lounges.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">7:00 PM</div>
+            <div class="details"><strong>Upscale Modern Korean Dinner:</strong> Dine at <strong>Hansikgonggan</strong> or <strong>Sowoon</strong> for elevated Korean cuisine.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">9:30 PM</div>
+            <div class="details"><strong>Nightcaps in Ikseon-dong:</strong> Sip craft cocktails or traditional <em>makgeolli</em> inside a converted 1920s hanok bar like <strong>Bar Cham</strong> or <strong>Eeo-duk</strong>.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Day 5 -->
+<div class="day-card">
+    <div class="day-header">
+        <span class="day-badge">DAY 5</span>
+        <span class="day-title">Relaxed Morning, Souvenirs &amp; Departure</span>
+    </div>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="time">10:00 AM</div>
+            <div class="details"><strong>Hotel Check-Out:</strong> Sleep in and pack bags stress-free at Nine Tree Premier Myeongdong.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">10:30 AM</div>
+            <div class="details"><strong>Lotte Department Store Food Hall:</strong> Walk through the basement food hall to pick up high-end tea sets, cosmetics, or packaged Korean snacks.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">12:00 PM</div>
+            <div class="details"><strong>Farewell Lunch at Han-ilkwan:</strong> Enjoy classic Seoul-style marinated <em>Bulgogi</em> cooked on a brass dome grill.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">1:45 PM</div>
+            <div class="details"><strong>AREX Express to Airport:</strong> Board the non-stop express train straight to Incheon Terminal 1.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="time">5:15 PM</div>
+            <div class="details"><strong>Flight Home:</strong> Depart on <strong>American Airlines AA 280</strong> back to Dallas (DFW).</div>
+        </div>
+    </div>
+    <div class="highlight-note">
+        <strong>Logistics Win:</strong> By placing your hot spring spa session on Day 4, Day 5 is entirely free of luggage logistics and flight countdown stress.
+    </div>
+</div>
+
+<footer>
+    <p>Custom 5-Day Seoul Travel Itinerary • Generated for Upload</p>
+</footer>
+
+</body>
+</html>
